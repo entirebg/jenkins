@@ -9,8 +9,7 @@ pipeline {
         stage('Deploy with Ansible') {
             steps {
                 script {
-                    sh "/opt/homebrew/bin/ansible-playbook --version
-"
+                    sh "/opt/homebrew/bin/ansible-playbook --version"
                 }
             }
         }
