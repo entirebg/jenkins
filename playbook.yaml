@@ -1,19 +1,11 @@
-- hosts: 127.0.0.1
+- hosts: localhost
   become: false
   gather_facts: false
 
   tasks:
-    - name: Pull the Docker image
-      docker_image:
-        name: nginx:latest
-
-    - name: Start the Docker container with the web server on port 8080
-      docker_container:
-        name: my_web_server
-        image: nginx:latest
-        ports:
-          - "8080:80"
+    - name: Create a Docker container with Ubuntu and run echo
+      community.docker.docker_container:
+        name: myubuntucontainer
+        image: ubuntu
+        command: echo "Hello"
         state: started
-
-
-        
