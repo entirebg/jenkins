@@ -1,12 +1,34 @@
-- hosts: localhost
-  become: false
-  gather_facts: false
+---
+- name: Start Web Server and MySQL in Docker Containers
+  hosts: localhost
+  become: yes
 
   tasks:
-    - name: Create a Docker container with Ubuntu and run echo
+    - name: Pull the Nginx Docker image
       community.docker.docker_container:
-        name: myubuntucontainer
+        name: nginx:latest
+        state: present
+
+    - name: Start the Nginx Docker container on port 8080
+      community.docker.docker_container:
+        name: my_web_server_nginx
         image: nginx:latest
         ports:
-          - "80:80"
+          - "8080:8090"
         state: started
+
+    - name: Start the HTTPD Docker container on port 8080
+      community.docker.docker_container:
+        name: my_web_server_httpd
+        image: httpd:latest
+        ports:
+          - "8080:8099"
+        state: started
+
+    - name: Run MySQL Docker container
+      community.docker.docker_container:
+        name: some-mysql
+        image: mysql:tag
+        env:
+          MYSQL_ROOT_PASSWORD: my-secret-pw
+        detach: yes
