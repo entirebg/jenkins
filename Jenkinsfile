@@ -7,7 +7,8 @@ pipeline {
         stage('Deploy with Ansible') {
             steps {
                 script {
-                    ansiblePlaybook installation: 'Ansible', playbook: 'playbook.yaml', vaultTmpPath: ''
+                    sh 'env'
+                    sh '/opt/homebrew/bin/ansible-playbook playbook.yaml'
                 }
             }
         }
