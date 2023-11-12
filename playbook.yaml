@@ -4,11 +4,6 @@
   become: yes
 
   tasks:
-    - name: Pull the Nginx Docker image
-      community.docker.docker_image:
-        name: nginx:latest
-        state: present
-
     - name: Start the Nginx Docker container on port 8080
       community.docker.docker_container:
         name: my_web_server_nginx
@@ -16,12 +11,7 @@
         ports:
           - "8080:8090"
         state: started
-
-    - name: Pull the HTTPD Docker image
-      community.docker.docker_image:
-        name: httpd:latest
-        state: present
-
+        
     - name: Start the HTTPD Docker container on port 8080
       community.docker.docker_container:
         name: my_web_server_httpd
