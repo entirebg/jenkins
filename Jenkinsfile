@@ -5,8 +5,12 @@ pipeline {
         stage('Debug') {
             steps {
                 script {
-                    sh 'env'
-                    sh '/opt/homebrew/bin/ansible-playbook playbook.yaml'
+                    ansiblePlaybook(
+                        become: true,
+                        installation: 'Ansible',
+                        playbook: 'playbook.yaml',
+                        vaultTmpPath: ''
+                    )
                 }
             }
         }
