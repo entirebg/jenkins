@@ -9,7 +9,8 @@ pipeline {
         stage('Deploy with Ansible') {
             steps {
                 script {
-                    sh "ansible-playbook playbook.yaml"
+                    sh "/opt/homebrew/bin/ansible-playbook --version
+"
                 }
             }
         }
