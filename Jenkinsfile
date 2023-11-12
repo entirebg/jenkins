@@ -1,18 +1,15 @@
 pipeline {
     agent any
 
-    environment {
-        PATH = "/opt/homebrew/bin:$PATH"
-    }
-
     stages {
-        stage('Deploy with Ansible') {
+        stage('Debug') {
             steps {
                 script {
-                    sh "/opt/homebrew/bin/ansible-playbook --version"
+                    sh 'env'
+                    sh '/opt/homebrew/bin/ansible-playbook playbook.yaml'
                 }
             }
         }
+        // ...
     }
 }
-
