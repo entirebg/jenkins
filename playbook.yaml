@@ -1,0 +1,13 @@
+- hosts: localhost
+  become: false
+  gather_facts: false
+
+  tasks:
+    - name: Create a Docker container with Ubuntu and run echo
+      community.docker.docker_container:
+        name: myubuntucontainer
+        image: ubuntu
+        command: echo "Hello"
+        state: started
+
+        
