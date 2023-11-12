@@ -4,11 +4,6 @@
   become: yes
 
   tasks:
-    - name: Pull the Nginx Docker image
-      community.docker.docker_image:
-        name: nginx:latest
-        state: present
-
     - name: Start the Nginx Docker container on port 8080
       community.docker.docker_container:
         name: my_web_server_nginx
@@ -16,29 +11,4 @@
         ports:
           - "8080:8090"
         state: started
-
-    - name: Pull the HTTPD Docker image
-      community.docker.docker_image:
-        name: httpd:latest
-        state: present
-
-    - name: Start the HTTPD Docker container on port 8080
-      community.docker.docker_container:
-        name: my_web_server_httpd
-        image: httpd:latest
-        ports:
-          - "8080:8099"
-        state: started
-
-    - name: Pull MySQL Docker image
-      community.docker.docker_image:
-        name: mysql:tag
-        state: present
-
-    - name: Run MySQL Docker container
-      community.docker.docker_container:
-        name: some-mysql
-        image: mysql:tag
-        env:
-          MYSQL_ROOT_PASSWORD: my-secret-pw
-        detach: yes
+        
