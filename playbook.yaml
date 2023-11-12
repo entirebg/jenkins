@@ -8,6 +8,6 @@
         name: myubuntucontainer
         image: ubuntu
         command: echo "Hello"
-        state: started
+        state: present
 
         
