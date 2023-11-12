@@ -2,11 +2,11 @@ pipeline {
     agent any
 
     stages {
-        stage('Debug') {
+         stage('Build') {
             steps {
+                ansiblePlaybook installation: 'Ansible', playbook: 'playbook.yaml', vaultTmpPath: ''
                 script {
-                    sh "id"
-                    sh "ansible-playbook"
+                    sh "ansible-playbook playbook.yaml"
                 }
             }
         }
