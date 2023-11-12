@@ -6,6 +6,7 @@
     - name: Create a Docker container with Ubuntu and run echo
       community.docker.docker_container:
         name: myubuntucontainer
-        image: ubuntu
-        command: echo "Hello"
+        image: nginx:latest
+        ports:
+          - "80:80"
         state: started
