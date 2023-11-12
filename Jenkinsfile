@@ -7,8 +7,7 @@ pipeline {
         stage('Deploy with Ansible') {
             steps {
                 script {
-                    def result = sh(script: '/opt/homebrew/bin/ansible-playbook playbook.yaml', returnStatus: true)
-                    echo "Exit Code: ${result}"
+                    ansiblePlaybook installation: 'Ansible', playbook: 'playbook.yaml', vaultTmpPath: ''
                 }
             }
         }
