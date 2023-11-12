@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     sh "id"
-                    "ansible-playbook"
+                    sh "ansible-playbook"
                 }
             }
         }
